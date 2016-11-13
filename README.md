@@ -1,5 +1,6 @@
 # 马克飞象笔记自动转换为Octopress本地站点博客和CSDN博客 --- 2016年11月11日 星期五
 
+
 ## GUI-Evernote-Auto-converted-to-Octopress-local-site-blog-and-CSDN-blog
 
 ### 2016年11月11日 ---
@@ -81,15 +82,88 @@ Octopress 转为 CSDN
 
 ---
 
+## 2.1  设计GUI界面
 
- 
-
-
-
+## 2.2 选择**马克飞象笔记解压后的文件夹的路径**
 
 
+> 参考网站：
+> C# 浏览（选择）文件夹、打开文件夹、选择文件
+> http://www.cnblogs.com/szytwo/archive/2012/03/21/2410041.html
 
 
+GUI界面：
+
+![Alt text](./img/1479012656306.png)
+
+双击 **浏览...** 按钮，进入编辑控件事件。（自动生成下面的代码）
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Evernote_to_Octopress_CSDN
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+```
+
+在 `button1_Click(object sender, EventArgs e)` 函数里面添加下面的代码：（其中的`tbEvernoteFolder`是`textBox`控件对象，我自定义的名字）
+
+```cs
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择文件路径";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string foldPath = dialog.SelectedPath;
+                tbEvernoteFolder.Text = foldPath;
+            }
+        }
+```
+
+---
+
+搞定，现在运行试试：
+
+点击浏览，弹出选择文件夹：
+
+![Alt text](./img/1479017872045.png)
+
+选择完毕，点击确定，`textBox` 控件对象中显示文件夹路径：
+
+![Alt text](./img/1479017949909.png)
+
+---
+
+> 灵感：
+> 对于打开指定文件夹、重命名文件、复制、粘贴、修改文件内容，都可以使用 **DOS 命令来解决**。
+> 我可以这样做：用C#界面调用执行Dos命令文件，再用Dos命令调用执行Python脚本。
+> 那么软件就设计起来就容易得多了。
+> 
+> 参考网站：
+> C#程序调用cmd执行命令
+> http://www.cnblogs.com/babycool/p/3570648.html
+> 收集21个DOS常用命令
+> http://www.jb51.net/article/12360.htm
 
 
 ---

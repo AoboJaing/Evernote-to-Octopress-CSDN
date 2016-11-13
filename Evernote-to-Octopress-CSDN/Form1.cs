@@ -15,5 +15,16 @@ namespace Evernote_to_Octopress_CSDN
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择文件路径";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string foldPath = dialog.SelectedPath;
+                tbEvernoteFolder.Text = foldPath;
+            }
+        }
     }
 }

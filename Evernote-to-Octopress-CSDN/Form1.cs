@@ -48,7 +48,7 @@ namespace Evernote_to_Octopress_CSDN
             octopress_tags = tbOctopressTags.Text;
 
             string python35_path = @"C:\Users\AOBO\AppData\Local\Programs\Python\Python35\python.exe";
-            string evernoteToOctopressBlog_py_path = @"D:\WorkSpace\python_ws\Evernote_Automatic_format_conversion\script\evernoteToOctopressBlog.py";
+            string evernoteToOctopressBlog_py_path = @"D:\WorkSpace\vs2010_ws\c#_ws\Evernote-to-Octopress-CSDN\Evernote_Automatic_format_conversion\script\evernoteToOctopressBlog.py";
             string commond, output;
             commond = python35_path + " " + evernoteToOctopressBlog_py_path + " -f \"" + folder_name
                 + "\" -p \"" + evernote_file_path + "\" -T \"" + octopress_title + "\" -c \"" + octopress_categories
